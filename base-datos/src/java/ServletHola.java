@@ -30,7 +30,7 @@ public class ServletHola extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.println("ya estas en el servidor");
+        out.println("ya estas en el servidor!");
         
         
         
