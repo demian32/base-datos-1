@@ -2,11 +2,19 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
         <servlet-name>Algo</servlet-name>
-        <servlet-class>ServletHola</servlet-class>
+        <servlet-class>com.jc.controladores.ServletHola</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAutenticar</servlet-name>
+        <servlet-class>com.jc.controladores.ServletAutenticar</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Algo</servlet-name>
         <url-pattern>/primero.aspx</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAutenticar</servlet-name>
+        <url-pattern>/autenticar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -14,6 +22,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>castillo.html</welcome-file>
     </welcome-file-list>
 </web-app>
