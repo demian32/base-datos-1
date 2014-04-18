@@ -13,7 +13,7 @@ package com.jc.model;
 import java.sql.*;
 import java.util.ArrayList;
 public class DAOUsuario {
-    Conexion con;
+    static Conexion con;
     
     public DAOUsuario(){
         con=new Conexion();
@@ -21,10 +21,10 @@ public class DAOUsuario {
     
     public void insertar(Usuario u)throws Exception{
      Connection cone=   con.conectarse();
-   CallableStatement callate=  cone.prepareCall("{call insertar_usuario(?,?,?)}");
+   CallableStatement callate=  cone.prepareCall("{call insertar_usuario_1(?,?,?)}");
    callate.setInt(1,u.getId());
    callate.setString(2,u.getNombre());
-   callate.setFloat(3, u.getSueldo());
+   callate.setString(3, u.getPass());
    callate.executeUpdate();
    callate.close();
    cone.close();
@@ -32,19 +32,32 @@ public class DAOUsuario {
     
  }
     
-    public ArrayList<Usuario> buscarTodos()throws Exception {
-        ArrayList<Usuario> todos=new ArrayList<Usuario>();
-        Connection cone=con.conectarse();
-        Statement st=cone.createStatement();
-        ResultSet res=st.executeQuery("select * from usuario1");
-        Usuario u=new Usuario();
-        while(res.next()){
-            u.setId(res.getInt(1));
-            u.setNombre(res.getString(2));
-            u.setSueldo(res.getFloat(3));
-            todos.add(u);
+    public static ArrayList<Usuario> buscarTodos()throws Exception {
+        
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+        
+        //Primero nos conectamos
+        Connection conexion = con.conectarse();
+        
+        //Crear un statement de SQL
+        Statement st = conexion.createStatement();
+        
+        //Crear un ResultSet (Columnas y Filas)
+        ResultSet res = st.executeQuery("SELECT * FROM USUARIO_1");
+        
+        //Llenar el ArrayList
+        while (res.next()){
+            
+            int id = res.getInt(1);
+            String nombre = res.getString(2);
+            String pass = res.getString(3);
+            
+            Usuario u = new Usuario (id,nombre,pass);
+            
+            usuarios.add(u);
+            
         }
         
-       return todos; 
+        return usuarios;
     }
 }

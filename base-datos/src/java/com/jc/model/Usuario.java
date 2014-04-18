@@ -13,7 +13,13 @@ package com.jc.model;
 public class Usuario {
     private int id;
     private String nombre;
-    private float sueldo;
+    private String pass;
+
+    public Usuario(int id, String nombre, String pass) {
+        this.id = id;
+        this.nombre = nombre;
+        this.pass = pass;
+    }
 
     public int getId() {
         return id;
@@ -31,12 +37,12 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public float getSueldo() {
-        return sueldo;
+    public String getPass() {
+        return pass;
     }
 
-    public void setSueldo(float sueldo) {
-        this.sueldo = sueldo;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
     
 }

@@ -14,10 +14,10 @@ package com.jc.model;
 import java.sql.*;
 public class Conexion {
     
-    public Connection conectarse()throws Exception{
+    public static Connection conectarse()throws Exception{
         String url="jdbc:oracle:thin:@localhost:1521:XE";
        Class.forName("oracle.jdbc.OracleDriver");
-       Connection con=DriverManager.getConnection(url,"campitos","campitos");
+       Connection con=DriverManager.getConnection(url,"KENNETH","ferraris1");
        return con;
     }
     

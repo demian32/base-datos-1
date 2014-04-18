@@ -33,13 +33,13 @@ public class ServletInsertarUsuario extends HttpServlet {
         
     int id=   Integer.parseInt(request.getParameter("id"));
     String nombre=    request.getParameter("nombre");
-    float sueldo=    Float.parseFloat(request.getParameter("sueldo"));
+    String pass=    request.getParameter("pass");
     
     
-    Usuario u=new Usuario();
+    Usuario u=new Usuario(id,nombre,pass);
     u.setId(id);
     u.setNombre(nombre);
-    u.setSueldo(sueldo);
+    u.setPass(pass);
    
     DAOUsuario dao=new DAOUsuario();
         try {
